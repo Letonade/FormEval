@@ -1,0 +1,14 @@
+afficher les modules d'une fonction
+	par ex.
+		développeur back : php / sql / symfony
+		développeur front : php / sql / angular
+		graphique web : html / css / boostrap
+
+créer un controleur : CoursesController
+Créer deux routes : 
+	/courses : affichage de toute les formations
+	/course/NOM DE LA FORMATION
+
+	par ex. : /course/webdesigner : affichage des modules de la formation graphiste
+
+créer 2 entités et les relier : Course / Module

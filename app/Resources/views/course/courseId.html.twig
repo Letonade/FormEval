@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="col">
+        <h1>Formation {{ results.name }} : </h1>
+            <table class="table table-striped">
+                <tbody>
+            {% for module in results.modules %}
+            <tr>
+                <td>{{ module.name }}</td></tr>
+            {% endfor %}
+                </tbody>
+            </table>
+        <a href="{{ url('courses') }}" class="btn btn-primary">Retour</a>
+        {% endblock %}
+{% block javascripts %}{% endblock %}

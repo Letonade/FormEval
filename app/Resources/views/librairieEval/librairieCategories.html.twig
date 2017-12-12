@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Evaluation du 12 décembre 2017  </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron">
+                <h1>Welcome !</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="page-header">
+                <h1>Categories</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>
+            {% for value in results %}
+                    <a  href="{{ url('category.id',{ 'id' : value.id } ) }}"class="btn btn-primary">{{  value.name }}</a>
+            {% endfor %}
+            </p></div></div>
+
+        <body>
+
+        {% endblock %}
+{% block javascripts %}{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'parent.html.twig' %}
+{% block main %}
+    <div class="col">
+    <h1>La liste des membres</h1>
+    {% for key,value in list %}
+        <div class="col-sm">
+            <div class="list-group">
+                <a href="{{ url('member',{'id' : key}) }}" class="list-group-item list-group-item-action p-3 mb-2 bg-primary text-white active">{{ value.name }}</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

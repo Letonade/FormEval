@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="col">
+            <div class="col">
+                <h1>Liste des contacts</h1>
+
+                {% for value in app.flashes('notice') %}
+                    <p class="alert alert-info">{{ value }}</p>
+                {% endfor %}
+                <p>
+                    <a href="{{ url('contact.form') }}" class="btn btn-primary">Ajouter</a>
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Loisirs</th>
+                        <th>OS</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for value in results %}
+                        <tr>
+                            <td>{{ value.lastname }}</td>
+                            <td>{{ value.firstname }}</td>
+                            <td>{{ value.email }}</td>
+                            <td>{{ value.message }}</td>
+                            <td>
+                            <ul>
+                                {% for hobby in value.hobbies %}
+                                <li>{{ hobby.name }}</li>
+                            {% endfor %}
+                            </ul></td>
+                            <td>
+                            {% if value.operatingSystem.name is defined %}
+                                {{ value.operatingSystem.name }}
+                            {% else %}
+                                <p class="alert alert-danger">Inconnu</p>
+                            {% endif %}
+                            </td>
+                            <td><a href="{{ url('contact.update',{ 'id' : value.id } ) }}" class="btn btn-warning">Modifier</a></td>
+                            <td><a href="{{ url('contact.delete',{ 'id' : value.id } ) }}" class="btn btn-danger">Supprimer</a></td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

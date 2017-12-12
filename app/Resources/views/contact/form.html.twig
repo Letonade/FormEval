@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-secondary">Contact</h1>
+
+                {#
+                    form_start : <form>
+                    form_end : </form>
+                    form_label : <label>
+                    form_widget : champ
+                    form_error : erreur
+                    Il est nécessaire de créer le bouton submit
+                    variable form : provient du controleur
+                    nom des champs provient de la classe de formulaire Form/...Type
+                #}
+
+                {{ form_errors(form.firstname) }}
+                {{ form_errors(form.lastname) }}
+                {{ form_errors(form.email) }}
+                {{ form_errors(form.message) }}
+
+                {{ form_start(form, { 'attr' : { 'novalidate' : 'novalidate' } }) }}
+                    <p>
+                        {{ form_label(form.firstname,'Prénom : ') }}
+                        {{ form_widget(form.firstname) }}
+                    </p>
+                    <p>
+                        {{ form_label(form.lastname,'Nom : ')}}
+                        {{ form_widget(form.lastname) }}
+                    </p>
+                    <p>
+                        {{ form_label(form.email,'Email : ') }}
+                        {{ form_widget(form.email) }}
+                    </p>
+                    <p>
+                        {{ form_label(form.message,'Messages : ') }}
+                        {{ form_widget(form.message, { 'attr' : { 'class' : 'materialize-textarea' } }) }}
+                    </p>
+                    <p>
+                        {{ form_label(form.hobbies,'Loisirs : ') }}
+                        {{ form_widget(form.hobbies) }}
+                    </p>
+                    <p>
+                        {{ form_label(form.operatingSystem,"Système d'exploitation : ") }}
+                        {{ form_widget(form.operatingSystem) }}
+                    </p>
+                <p>
+                    <button class="btn btn-primary" type="submit" style="cursor: pointer;">Valider</button>
+                </p>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

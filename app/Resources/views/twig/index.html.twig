@@ -1,0 +1,44 @@
+{#
+    set : Création d'une variable
+    date('Y-m-d') : met la date au format Année-Mois-Jour on fais {{ maVariable | date('Y-m-d') }}
+    length : récupère le nombre d'élément d'un tableau sous le forme d'un Integer
+    capitalize : Met en majuscule le premier caractère d'une chaine
+ #}
+
+{#
+    lien: utilise le name des routes @Route("/URL", name="NOM UNIQUE")
+        url: lien absolue
+        path: lien relatif
+            1er paramètre : nom de la route
+            2eme paramètre : valeur des variable d'URL
+
+     ressources externes:
+        asset : cible le dossier public "web"
+
+
+#}
+{#<img src="{{ asset('img/logo.jpg') }}">#}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<p><a href="{{ url('homepage') }}">Accueil</a></p>
+<p><a href="{{ url('hello',{'name' : 'Romain'}) }}">Hello</a></p>
+Nous sommes le {{ now | date('Y-m-d') }}
+
+<p>Il y a {{ list | length }} éléments</p>
+
+{% for value in list %}
+    {{ value | capitalize | reverse }}
+{% endfor %}
+
+{% set meteo = 'soleil' %}
+
+{%  if meteo == 'soleil' %}
+    <p>Ensoleillé</p>
+    {% elseif meteo =='neige' %}
+        <p>Neige</p>
+    {% else %}
+        <p>Nuageux</p>
+{% endif %}
+
+{% endblock %}
